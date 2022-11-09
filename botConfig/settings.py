@@ -148,7 +148,7 @@ REST_FRAMEWORK = {
 #model
 #deepset has to be stored in our db
 #reader should have been read no need for re-reading
-reader = FARMReader(model_name_or_path="deepset/roberta-base-squad2",top_k=3, use_gpu=False) # return_no_answer=True
+reader = FARMReader(model_name_or_path="deepset/tinyroberta-squad2",top_k=3, use_gpu=False) # return_no_answer=True
 
 #model pipeline
 MODEL = Pipeline()
