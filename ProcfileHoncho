@@ -1,2 +1,2 @@
 web: gunicorn botConfig.wsgi --log-file=-
-worker: celery -A botConfig worker -l INFO
+worker: celery -A botConfig worker --pool=gevent -l INFO
