@@ -15,6 +15,7 @@ from haystack.nodes import FARMReader
 from haystack import Pipeline
 import os
 import django_heroku
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -151,14 +152,15 @@ REST_FRAMEWORK = {
 #model
 #deepset has to be stored in our db
 #reader should have been read no need for re-reading
-reader = FARMReader(model_name_or_path="deepset/tinyroberta-squad2",top_k=3, use_gpu=False) # return_no_answer=True
+# reader = FARMReader(model_name_or_path="deepset/tinyroberta-squad2",top_k=3, use_gpu=False) # return_no_answer=True
+reader = FARMReader(model_name_or_path="distilbert-base-uncased-distilled-squad",top_k=3, use_gpu=False) # return_no_answer=True
 
 #model pipeline
 MODEL = Pipeline()
 MODEL.add_node(component= reader, name="Reader", inputs=["Query"])
 
 # Celery settings
-CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", "redis://localhost:6379")
-CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "redis://localhost:6379")
+CELERY_BROKER_URL = config("CELERY_BROKER_URL", "redis://localhost:6379")
+CELERY_RESULT_BACKEND = config("CELERY_RESULT_BACKEND", "redis://localhost:6379")
 
 django_heroku.settings(locals())
