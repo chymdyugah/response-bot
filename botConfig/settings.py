@@ -14,7 +14,7 @@ from pathlib import Path
 from haystack.nodes import FARMReader
 from haystack import Pipeline
 import os
-import django_heroku
+# import django_heroku
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -163,4 +163,4 @@ MODEL.add_node(component= reader, name="Reader", inputs=["Query"])
 CELERY_BROKER_URL = config("CELERY_BROKER_URL", "redis://localhost:6379")
 CELERY_RESULT_BACKEND = config("CELERY_RESULT_BACKEND", "redis://localhost:6379")
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
