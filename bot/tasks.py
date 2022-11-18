@@ -3,13 +3,15 @@ from django.conf import settings
 import requests, json
 from celery import shared_task
 from model.newmodel import new_mod
+from bot.apps import BotConfig
 
 @shared_task()
 def upload_to_ai(questions:list, user_info:str, merchant:str, user_id:int):
-    for question in questions:
-        answer = new_mod(question, user_info)
-        print(answer)
-    # model_predictions = predict(questions, settings.MODEL, user_info)
+    # for question in questions:
+    #     answer = new_mod(question, user_info)
+    #     print(answer)
+    model_predictions = predict(questions, BotConfig.MODEL, user_info)
+    print(model_predictions)
     # predictions = {'Question':{}, 'Response':{},'Confidence':{}}
     # for a in predictions:
     #     if a == 'Question':

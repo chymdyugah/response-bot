@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from haystack.nodes import FARMReader
-from haystack import Pipeline
+# from haystack.nodes import FARMReader
+# from haystack import Pipeline
 import os
 # import django_heroku
 from decouple import config
@@ -153,11 +153,11 @@ REST_FRAMEWORK = {
 #deepset has to be stored in our db
 #reader should have been read no need for re-reading
 # reader = FARMReader(model_name_or_path="deepset/tinyroberta-squad2",top_k=3, use_gpu=False) # return_no_answer=True
-reader = FARMReader(model_name_or_path="distilbert-base-uncased-distilled-squad",top_k=3, use_gpu=False) # return_no_answer=True
+# reader = FARMReader(model_name_or_path="distilbert-base-uncased-distilled-squad",top_k=3, use_gpu=False) # return_no_answer=True
 
 #model pipeline
-MODEL = Pipeline()
-MODEL.add_node(component= reader, name="Reader", inputs=["Query"])
+# MODEL = Pipeline()
+# MODEL.add_node(component= reader, name="Reader", inputs=["Query"])
 
 # Celery settings
 CELERY_BROKER_URL = config("CELERY_BROKER_URL", "redis://localhost:6379")
