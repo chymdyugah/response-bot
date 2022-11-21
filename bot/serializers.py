@@ -9,5 +9,5 @@ class BotSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         # call ai and run async
-        upload_to_ai.delay(validated_data['questions'], validated_data['user_info'], validated_data['merchant'], validated_data['user_id'])
+        upload_to_ai(validated_data['questions'], validated_data['user_info'], validated_data['merchant'], validated_data['user_id'])
         return "successfull"
