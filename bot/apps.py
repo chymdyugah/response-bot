@@ -2,6 +2,9 @@ from django.apps import AppConfig
 from django.apps import AppConfig
 from haystack.nodes import FARMReader
 from haystack import Pipeline
+import os
+
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 class BotConfig(AppConfig):
