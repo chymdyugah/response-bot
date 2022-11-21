@@ -4,7 +4,7 @@ from haystack.nodes import FARMReader
 from haystack import Pipeline
 import os
 
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ["TOKENIZERS_PARALLELISM"] = "false"  # do this to avoid problems with multiprocessing
 
 
 class BotConfig(AppConfig):
