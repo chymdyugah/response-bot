@@ -26,7 +26,7 @@ def upload_to_ai(questions:list, user_info:str, merchant:str, user_id:int):
             predictions[a].update(model_predictions['Response'])
         if a == 'Confidence':
             predictions[a].update(model_predictions['Confidence'])
-    requests.post("http://localhost:8000/api/compliance/submit_predictions/", data={"predictions": json.dumps(predictions), "merchant": merchant, "user": user_id})
+    requests.post("https://api.smartcomplyapp.com/api/compliance/submit_predictions/", data={"predictions": json.dumps(predictions), "merchant": merchant, "user": user_id})
     return
 
 @shared_task()
