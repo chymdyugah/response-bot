@@ -12,9 +12,9 @@ class BotView(GenericAPIView):
         try:
             serializer = self.serializer_class(data=request.data)
             serializer.is_valid(raise_exception=True)
-            serializer.save()
+            data = serializer.save()
             print(serializer.data)
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
+            return Response(data=data, status=status.HTTP_200_OK)
         except Exception as e:
             print(str(e))
             return Response(data=str(e), status=status.HTTP_400_BAD_REQUEST)

@@ -1,8 +1,6 @@
 from model.QA_Model import predict
-from django.conf import settings
 import requests, json
 from celery import shared_task
-from model.newmodel import new_mod
 from bot.apps import BotConfig
 
 @shared_task()
