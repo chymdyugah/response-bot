@@ -19,7 +19,7 @@ def upload_to_ai(questions:list, user_info:str, merchant:str, user_id:int):
             predictions[a].update({'Security Monitoring':dict(list(model_predictions['Question'].items())[34:45])})
             predictions[a].update({'Business Continuity / Disaster Recovery':dict(list(model_predictions['Question'].items())[45:50])})
             predictions[a].update({'Incident Response':dict(list(model_predictions['Question'].items())[50:56])})
-            predictions[a].update({'Risk Management/Auditing /Regulatory Compliance':dict(list(model_predictions['Question'].items())[56:100])})
+            predictions[a].update({'Risk Management/Auditing /Regulatory Compliance':dict(list(model_predictions['Question'].items())[56:])})
         if a == 'Response':
             predictions[a].update(model_predictions['Response'])
         if a == 'Confidence':
