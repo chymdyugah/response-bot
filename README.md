@@ -1,14 +1,14 @@
 # response-bot
 A question answering model wrapped in django.
 
-**ENSURE YOU SET THESE ENVIRONMENT VARIABLES**\n
-DEBUG\n
-TOKENIZERS_PARALLELISM\n
-SECRET_KEY\n
-SUBMISSION_SERVER\n
+**ENSURE YOU SET THESE ENVIRONMENT VARIABLES**
+DEBUG
+TOKENIZERS_PARALLELISM
+SECRET_KEY
+SUBMISSION_SERVER
 MODEL_PATH (see https://huggingface.co/models?pipeline_tag=question-answering for available models)
 
-To try this out; \n
+To try this out;
 start your server.
 make a post repuest to this endpoint(/bot/run/) with a json body with these keys
 questions: a list of string(questions you want answered)
