@@ -160,7 +160,7 @@ REST_FRAMEWORK = {
 # MODEL.add_node(component= reader, name="Reader", inputs=["Query"])
 
 # Celery settings
-CELERY_BROKER_URL = config("CELERY_BROKER_URL", "redis://localhost:6379")
-CELERY_RESULT_BACKEND = config("CELERY_RESULT_BACKEND", "redis://localhost:6379")
+# CELERY_BROKER_URL = config("CELERY_BROKER_URL", "redis://localhost:6379")
+# CELERY_RESULT_BACKEND = config("CELERY_RESULT_BACKEND", "redis://localhost:6379")
 
 # django_heroku.settings(locals())

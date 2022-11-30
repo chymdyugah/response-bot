@@ -2,9 +2,10 @@ from model.QA_Model import predict
 import requests, json
 from celery import shared_task
 from bot.apps import BotConfig
+from decouple import config
 
 @shared_task()
-def upload_to_ai(questions:list, user_info:str, merchant:str, user_id:int):
+def upload_to_ai(questions:list, user_info:str, merchant:str=None, user_id:int=None):
     # for question in questions:
     #     answer = new_mod(question, user_info)
     #     print(answer)
@@ -24,8 +25,9 @@ def upload_to_ai(questions:list, user_info:str, merchant:str, user_id:int):
             predictions[a].update(model_predictions['Response'])
         if a == 'Confidence':
             predictions[a].update(model_predictions['Confidence'])
-    requests.post("https://api.smartcomplyapp.com/api/compliance/submit_predictions/", data={"predictions": json.dumps(predictions), "merchant": merchant, "user": user_id})
-    return
+    server = config("SUBMISSION_SERVER")
+    requests.post(f"https://{server}/api/compliance/submit_predictions/", data={"predictions": json.dumps(predictions), "merchant": merchant, "user": user_id})
+    return predictions
 
 @shared_task()
 def add():

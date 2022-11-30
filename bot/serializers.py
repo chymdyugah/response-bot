@@ -8,6 +8,6 @@ class BotSerializer(serializers.Serializer):
     user_id = serializers.IntegerField(required=True, write_only=True)
 
     def create(self, validated_data):
-        # call ai and run async
-        upload_to_ai(validated_data['questions'], validated_data['user_info'], validated_data['merchant'], validated_data['user_id'])
-        return "successfull"
+        # call ai
+        preds = upload_to_ai(validated_data['questions'], validated_data['user_info'], validated_data['merchant'], validated_data['user_id'])
+        return preds
