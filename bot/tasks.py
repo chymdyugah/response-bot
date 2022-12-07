@@ -5,7 +5,7 @@ from bot.apps import BotConfig
 from decouple import config
 
 @shared_task()
-def upload_to_ai(questions:list, user_info:str, merchant:str=None, user_id:int=None):
+def upload_to_ai(questions:list, user_info:str, merchant:str=None, user_id:int=None, file_name:str=None):
     # for question in questions:
     #     answer = new_mod(question, user_info)
     #     print(answer)
@@ -26,7 +26,7 @@ def upload_to_ai(questions:list, user_info:str, merchant:str=None, user_id:int=N
         if a == 'Confidence':
             predictions[a].update(model_predictions['Confidence'])
     server = config("SUBMISSION_SERVER")
-    requests.post(f"https://{server}/api/compliance/submit_predictions/", data={"predictions": json.dumps(predictions), "merchant": merchant, "user": user_id})
+    requests.post(f"https://{server}/api/compliance/submit_predictions/", data={"predictions": json.dumps(predictions), "merchant": merchant, "user": user_id, "file_name": file_name})
     return predictions
 
 @shared_task()
